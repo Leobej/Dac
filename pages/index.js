@@ -13,7 +13,8 @@ const cardStyle = {};
 
 function IndexPage() {
   return (
-    <Card styles={stylesCard.paperContainer}
+    <Card
+      styles={stylesCard.paperContainer}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -37,10 +38,14 @@ function IndexPage() {
         Servis La Vericu
       </Typography>
       <Button
-      
         variant="outlined"
         color="success"
-        sx={{ width: "20vh",height:"12vh",marginTop:"23vh", alignSelf:"center"}}
+        sx={{
+          width: "20vh",
+          height: "12vh",
+          marginTop: "23vh",
+          alignSelf: "center",
+        }}
       >
         Magazin
       </Button>

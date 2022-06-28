@@ -10,8 +10,8 @@ import Link from "next/link";
 
 export default function NavBar(props) {
   return (
-    <Box sx={{}}>
-      <AppBar position="">
+    <Box>
+      <AppBar>
         <Toolbar>
           <Link href="/">
             <IconButton
@@ -30,9 +30,9 @@ export default function NavBar(props) {
 
           <Link href="/SignUp">
             <Button color="inherit">Sign Up</Button>
-            </Link>
-            <Link href="/Services">
-          <Button color="inherit">Services</Button>
+          </Link>
+          <Link href="/Services">
+            <Button color="inherit">Services</Button>
           </Link>
         </Toolbar>
       </AppBar>
