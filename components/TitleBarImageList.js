@@ -9,8 +9,9 @@ import { Router } from "@mui/icons-material";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import { styled } from "@mui/material";
+import CustomImageListItem from "./CustomImageListItem";
 
-import CustomImageListItem from ""
+
 
 const useStyles = styled((theme) => ({
   root: {
@@ -58,7 +59,7 @@ export default function TitlebarImageList(props) {
         {" "}
         <h1>{filteredList[2].category}</h1>
       </ImageListItem>
-    <CustomImageListItem></CustomImageListItem>
+    <CustomImageListItem itemData={props.itemData}></CustomImageListItem>
     </ImageList>
   );
 }

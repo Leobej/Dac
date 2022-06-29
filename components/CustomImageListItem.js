@@ -32,3 +32,5 @@ const CustomImageListItem = (props) => {
     </>
   );
 };
+
+export default CustomImageListItem;
