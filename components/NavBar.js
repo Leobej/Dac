@@ -2,22 +2,23 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-
+import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { isLoggInState } from "../atoms/atoms";
-
-
+import { ShoppingCart } from "@mui/icons-material";
+import { counterValue } from "../selector/selector";
 
 export default function NavBar(props) {
   const [isLoggedInState, setIsLoggedInState] = useState(false);
+  const contor = useRecoilValue(counterValue);
   const clickHandler = () => {
     event.preventDefault();
-    console.log("pl negro");
+
     setIsLoggedInState(!isLoggedInState);
   };
   // const isLoggedIn = useRecoilState(isLoggInState);
@@ -52,7 +53,11 @@ export default function NavBar(props) {
           </Link>
           <Button color="inherit" onClick={clickHandler}>
             {" "}
-            buton borat
+            Button
+          </Button>
+          <Button sx={{ ml:"70%" }} color="inherit">
+            <ShoppingCart></ShoppingCart>
+            <Typography>{contor}</Typography>
           </Button>
         </Toolbar>
       </AppBar>

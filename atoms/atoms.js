@@ -5,3 +5,8 @@ export const AuthState = atom({
   //default from memory
   default: {},
 });
+
+export const counter=atom({
+  key:"counter",
+  default:0,
+});

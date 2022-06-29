@@ -31,7 +31,7 @@ export default function TitlebarImageList(props) {
     <ImageList sx={{ mt: "5%", ml: "15%", width: "70%", heigh: "100%" }}>
       <ImageListItem key="Subheader">{"smth"}</ImageListItem>
       <CustomImageListItem itemData={props.itemData}>
-        {"kajsdkfjhasd"}
+
       </CustomImageListItem>
     </ImageList>
   );

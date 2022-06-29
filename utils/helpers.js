@@ -1,5 +1,5 @@
 export const getBackendURL = () => {
-  return "https://localhost:7179/api/";
+  return "http://localhost:7179";
 };
 
 // export const getLoginPath = () => {
