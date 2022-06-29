@@ -13,3 +13,7 @@ export const getSignUpPath = () => {
 export const getSignInPath = () => {
   return "Customers/LogIn";
 };
+
+export const getAllServicesPath = () => {
+  return "Services/GetAll";
+};

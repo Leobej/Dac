@@ -1,5 +1,10 @@
 import { useRecoilState } from "recoil";
-import { getBackendURL, getSignUpPath, getSignInPath } from "../utils/helpers";
+import {
+  getBackendURL,
+  getSignUpPath,
+  getSignInPath,
+  getAllServicesPath,
+} from "../utils/helpers";
 
 //create a signup function
 export const SignUpHelper = (user, successHandler, errorHandler) => {
@@ -35,6 +40,29 @@ export const SignInHelper = async (user, successHandler, errorHandler) => {
 
     body: JSON.stringify(user),
   });
+  const data = await response.json();
+  if (response.ok) {
+    successHandler(data);
+  } else {
+    errorHandler(data);
+  }
+};
+
+export const GetAllServices = async (successHandler, errorHandler) => {
+  const user = window.localStorage.getItem("user");
+  //transform user to json
+  const token = JSON.parse(user).token;
+
+  const response = await fetch(`${getBackendURL()}${getAllServicesPath()}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    },
+  });
+
   const data = await response.json();
   if (response.ok) {
     successHandler(data);

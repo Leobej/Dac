@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { SignInHelper } from "../_actions/UserActions";
 import { useRecoilState } from "recoil";
 import { AuthState } from "../atoms/atoms";
+import { useRouter } from "next/router";
 
 function Copyright(props) {
   return (
@@ -39,13 +40,15 @@ const errorHandler = (error) => {
 
 export default function SignIn() {
   const [authState, setAuthState] = useRecoilState(AuthState);
+  const router = useRouter();
 
   const successHandler = async (response) => {
     alert("Success!");
-    const body = response;
+    const body = await response;
     setAuthState(body);
-
-    console.log(authState);
+    window.localStorage.setItem("user", JSON.stringify(body));
+    //console.log(authState);
+    router.push("/Services");
   };
 
   const handleSubmit = (event) => {
