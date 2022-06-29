@@ -55,6 +55,14 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    for (const [key, value] of data.entries()) {
+      if (value.length === 0) {
+        alert("Please fill in all the fields");
+        return false;
+      }
+    }
+
     const user = {
       email: data.get("email"),
       password: data.get("password"),
