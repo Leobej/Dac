@@ -1,7 +1,7 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
+import { format } from "date-fns";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -10,9 +10,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BasicDateTimePicker from "../components/BasicDateTimePicker";
+import { SignUpHelper } from "../_actions/UserActions";
 
 function Copyright(props) {
   return (
@@ -35,13 +35,35 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [birthdate, setBirthdate] = React.useState(new Date());
+
+  const setBirthdayHandler = (date) => {
+    setBirthdate(format(date, "yyyy-MM-dd"));
+  };
+
+  const successHandler = () => {
+    alert("Success!");
+  };
+
+  const errorHandler = () => {
+    alert("Error!");
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const user = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      birthdate: birthdate,
+      phoneNumber: data.get("phoneNumber"),
+      createdOn: format(Date.now(), "yyyy-MM-dd"),
+    };
+
+    console.log(JSON.stringify(user));
+    SignUpHelper(user, successHandler, errorHandler);
   };
 
   return (
@@ -108,12 +130,8 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <BasicDateTimePicker
-                required
-                fullWidth
-                id="birthDate"
-                label="BirthDate"
-                name="birthDate"
-                autoComplete="birthDate"
+                onChange={setBirthdayHandler}
+                value={birthdate}
               />
             </Grid>
             <Grid item xs={12}>
