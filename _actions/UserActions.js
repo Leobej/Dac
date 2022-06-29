@@ -18,6 +18,6 @@ export const SignUpHelper = (user, successHandler, errorHandler) => {
       successHandler();
     })
     .catch((error) => {
-      errorHandler();
+      errorHandler(error);
     });
 };

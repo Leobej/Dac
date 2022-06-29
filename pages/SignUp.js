@@ -45,8 +45,8 @@ export default function SignUp() {
     alert("Success!");
   };
 
-  const errorHandler = () => {
-    alert("Error!");
+  const errorHandler = (error) => {
+    alert(error.detail);
   };
 
   const handleSubmit = (event) => {
