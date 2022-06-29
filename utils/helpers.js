@@ -9,3 +9,7 @@ export const getBackendURL = () => {
 export const getSignUpPath = () => {
   return "Customers/Register";
 };
+
+export const getSignInPath = () => {
+  return "Customers/LogIn";
+};

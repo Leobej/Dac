@@ -1,8 +1,9 @@
 import { atom } from "recoil";
 
 export const AuthState = atom({
-  key: "auth",
-  default: JSON.parse(localStorage.getItem(key)) || {},
+  key: "",
+  //default from memory
+  default: {},
 });
 
 export const userAtom = atom({
