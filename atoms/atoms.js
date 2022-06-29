@@ -1,12 +1,7 @@
 import { atom } from "recoil";
 
 export const AuthState = atom({
-  key: "",
+  key: "user",
   //default from memory
   default: {},
-});
-
-export const userAtom = atom({
-  key: "user",
-  default: null,
 });
