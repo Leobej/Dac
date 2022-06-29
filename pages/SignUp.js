@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BasicDateTimePicker from "../components/BasicDateTimePicker";
 import { SignUpHelper } from "../_actions/UserActions";
+import { useRouter } from "next/router";
 
 function Copyright(props) {
   return (
@@ -35,6 +36,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const router = useRouter();
   const [birthdate, setBirthdate] = React.useState(new Date());
 
   const setBirthdayHandler = (date) => {
@@ -42,7 +44,8 @@ export default function SignUp() {
   };
 
   const successHandler = () => {
-    alert("Success!");
+    //alert("Success!");
+    router.push("/SignIn");
   };
 
   const errorHandler = (error) => {
