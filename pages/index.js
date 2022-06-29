@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Paper from "@mui/material/Paper";
 import { Card } from "@mui/material";
 import { Button } from "@mui/material";
+import Link from "next/dist/client/link";
 const stylesCard = {
   paperContainer: {
     backgroundImage: `url(../resources/images/download.jpg)`,
@@ -37,6 +38,7 @@ function IndexPage() {
       >
         Servis La Vericu
       </Typography>
+      <Link href="/Services" >
       <Button
         variant="outlined"
         color="success"
@@ -46,9 +48,11 @@ function IndexPage() {
           marginTop: "23vh",
           alignSelf: "center",
         }}
+        
       >
         Magazin
       </Button>
+      </Link>
     </Card>
   );
 }

@@ -5,25 +5,32 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-
+import { Router } from '@mui/icons-material';
+import { useRouter } from 'next/dist/client/router';
 export default function TitlebarImageList(props) {
 
+  const router=useRouter();
   const clickHandler=(event)=>{
-console.log(event.target.title);
+const servicesId =event.currentTarget.item;
+router.push(`${"/"+servicesId}`);
   }
+ 
   return (
     <ImageList  sx={{mt:"5%",ml:"15%", width: "70%" }}>
-      <ImageListItem key="Subheader" cols={4} sx={{width:"5%"}}  >
+      <ImageListItem key="Subheader" cols={4}  >
    
       </ImageListItem>
       {props.itemData.map((item) => (
-        <ImageListItem key={item.img} >
+        <ImageListItem 
+        key={item.img}
+      onClick={clickHandler}
+        >
           <img
             src={`${item.img}?w=248&fit=crop&auto=format`}
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
-            onClick={clickHandler}
+  
             
           />
           <ImageListItemBar
