@@ -5,54 +5,53 @@ import Paper from "@mui/material/Paper";
 import { Card } from "@mui/material";
 import { Button } from "@mui/material";
 import Link from "next/dist/client/link";
-const stylesCard = {
-  paperContainer: {
-    backgroundImage: `url(../resources/images/download.jpg)`,
-  },
-};
-const cardStyle = {};
+import Image from "next/image";
 
 function IndexPage() {
   return (
-    <Card
-      styles={stylesCard.paperContainer}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignContent: "center",
-        justifyContent: "center",
-        transitionDuration: "0.3s",
-        height: "91vh",
-      }}
-    >
-      <Head>
-        <title>Servis La vericu</title>
-        <meta property="og:title" content="My page title" key="title" />
-      </Head>
-      <Typography
-        fontStyle={"oblique"}
-        fontFamily={"fantasy"}
-        align="center"
-        color={"black"}
-        variant="h1"
+    <>
+      <div className="z-index:-1">
+        <Image
+          src={"/vericugpl.jpg"}
+          alt="Picture of the author"
+          layout="fill"
+          objectFit="cover"
+          sx={{ zIndex: "-10" }}
+        />
+      </div>
+      <Card
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "center",
+          justifyContent: "center",
+          transitionDuration: "0.3s",
+          height: "91vh",
+        }}
       >
-        Servis La Vericu
-      </Typography>
-      <Link href="/Services">
-        <Button
-          variant="outlined"
-          color="success"
-          sx={{
-            width: "20vh",
-            height: "12vh",
-            marginTop: "23vh",
-            alignSelf: "center",
-          }}
-        >
-          Magazin
-        </Button>
-      </Link>
-    </Card>
+        <Head>
+          <title>Servis La vericu</title>
+          <meta property="og:title" content="My page title" key="title" />
+        </Head>
+       
+   
+        <Link href="/Services">
+          <Button
+            variant="outlined"
+            color="success"
+            sx={{
+              width: "20vh",
+              height: "12vh",
+              marginTop: "23vh",
+              alignSelf: "center",
+            }}
+          >
+            Magazin
+          </Button>
+        </Link>
+        
+      </Card>
+    </>
   );
 }
 

@@ -74,10 +74,21 @@ export default function NavBar(props) {
             {" "}
             Button
           </Button>
-          <Button sx={{ ml: "70%" }} color="inherit" onClick={clickHandlerCart}>
+
+          <Typography
+          fontStyle={"oblique"}
+          fontFamily={"fantasy"}
+          align="center"
+          color={"black"}
+        sx={{ml:"22%"}}
+        >
+          Servis La Vericu
+        </Typography>
+          <Button sx={{ ml: "35%" }} color="inherit" onClick={clickHandlerCart}>
             <ShoppingCart></ShoppingCart>
             {finalPrice.toString()}
           </Button>
+          
         </Toolbar>
       </AppBar>
     </Box>
