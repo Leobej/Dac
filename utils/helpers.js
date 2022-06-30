@@ -1,7 +1,6 @@
 export const getBackendURL = () => {
-  return "http://localhost:7179";
+  return "https://localhost:7179/api/";
 };
-
 // export const getLoginPath = () => {
 //   return "&scr=login";
 // };
@@ -16,4 +15,8 @@ export const getSignInPath = () => {
 
 export const getAllServicesPath = () => {
   return "Services/GetAll";
+};
+
+export const getPlaceOrderPath = () => {
+  return "Customers/PlaceOrder";
 };

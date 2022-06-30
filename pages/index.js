@@ -38,20 +38,19 @@ function IndexPage() {
       >
         Servis La Vericu
       </Typography>
-      <Link href="/Services" >
-      <Button
-        variant="outlined"
-        color="success"
-        sx={{
-          width: "20vh",
-          height: "12vh",
-          marginTop: "23vh",
-          alignSelf: "center",
-        }}
-        
-      >
-        Magazin
-      </Button>
+      <Link href="/Services">
+        <Button
+          variant="outlined"
+          color="success"
+          sx={{
+            width: "20vh",
+            height: "12vh",
+            marginTop: "23vh",
+            alignSelf: "center",
+          }}
+        >
+          Magazin
+        </Button>
       </Link>
     </Card>
   );

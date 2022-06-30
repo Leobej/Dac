@@ -4,6 +4,7 @@ import {
   getSignUpPath,
   getSignInPath,
   getAllServicesPath,
+  getPlaceOrderPath,
 } from "../utils/helpers";
 
 //create a signup function
@@ -48,7 +49,7 @@ export const SignInHelper = async (user, successHandler, errorHandler) => {
   }
 };
 
-export const GetAllServices = async (successHandler, errorHandler) => {
+export const GetAllServices = async (errorHandler) => {
   const user = window.localStorage.getItem("user");
   //transform user to json
   const token = JSON.parse(user).token;
@@ -65,8 +66,32 @@ export const GetAllServices = async (successHandler, errorHandler) => {
 
   const data = await response.json();
   if (response.ok) {
-    successHandler(data);
+    return data;
   } else {
     errorHandler(data);
+  }
+};
+
+export const PlaceOrder = async (order) => {
+  const user = window.localStorage.getItem("user");
+  const token = JSON.parse(user).token;
+
+  const response = await fetch(`${getBackendURL()}${getPlaceOrderPath()}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    },
+    body: JSON.stringify(order),
+  });
+
+  const data = await response.json();
+  if (response.ok) {
+    alert("Order placed successfully");
+    console.log(data);
+  } else {
+    console.log("error");
   }
 };

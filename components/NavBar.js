@@ -8,19 +8,38 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { isLoggInState } from "../atoms/atoms";
 import { ShoppingCart } from "@mui/icons-material";
-import { counterValue } from "../selector/selector";
+import { useRecoilState } from "recoil";
+import { ShoppingCartItems } from "../atoms/atoms";
+import { useRouter } from "next/router";
 
 export default function NavBar(props) {
+  const router = useRouter();
+  const [shoppingCart, setShoppingCart] = useRecoilState(ShoppingCartItems);
+  let finalPrice = 0;
+  shoppingCart.forEach((item) => {
+    finalPrice += item.priceService != null ? item.priceService.price : 0;
+  });
+
   const [isLoggedInState, setIsLoggedInState] = useState(false);
-  const contor = useRecoilValue(counterValue);
-  const clickHandler = () => {
+  //const contor = useRecoilValue(counterValue);
+  const clickHandler = (event) => {
     event.preventDefault();
 
     setIsLoggedInState(!isLoggedInState);
   };
+
+  //user router to get to Cart Page
+  const clickHandlerCart = (event) => {
+    //add finalPrice as query for cart page
+    router.push({
+      pathname: "/Cart",
+      query: {
+        price: finalPrice,
+      },
+    });
+  };
+
   // const isLoggedIn = useRecoilState(isLoggInState);
   return (
     <Box>
@@ -48,16 +67,16 @@ export default function NavBar(props) {
               </Link>
             </>
           ) : null}
-          <Link href="/Services">
+          <Link href="/Services" prefetch={true}>
             <Button color="inherit">Services</Button>
           </Link>
           <Button color="inherit" onClick={clickHandler}>
             {" "}
             Button
           </Button>
-          <Button sx={{ ml:"70%" }} color="inherit">
+          <Button sx={{ ml: "70%" }} color="inherit" onClick={clickHandlerCart}>
             <ShoppingCart></ShoppingCart>
-            <Typography>{contor}</Typography>
+            {finalPrice.toString()}
           </Button>
         </Toolbar>
       </AppBar>

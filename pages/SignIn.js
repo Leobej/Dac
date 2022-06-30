@@ -45,7 +45,7 @@ export default function SignIn() {
   const successHandler = async (response) => {
     alert("Success!");
     const body = await response;
-    setAuthState(body);
+    setAuthState(JSON.stringify(body));
     window.localStorage.setItem("user", JSON.stringify(body));
     //console.log(authState);
     router.push("/Services");
